@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Star from "./Star"
 
 const Rating = ({ heading = "How do you feel about React?", color = "gold" }) => {
   const [rating, setRating] = useState(0);
@@ -11,16 +12,16 @@ const Rating = ({ heading = "How do you feel about React?", color = "gold" }) =>
         <h2>{heading}</h2>
         <div className="stars">
           {stars.map((star) => (
-            <span
-              className="star"
+            <Star 
               key={star}
-              onClick={() => setRating(star)}
-              onMouseEnter={() => setHover(star)}
-              onMouseLeave={() => setHover(0)}
-              style={{ color: star <= (rating || hover) ? color : "#ccc" }}
-            >
-              {"\u2605"}
-            </span>
+              star={star}
+              stars={stars}
+              color={color}
+              rating={rating}
+              hover={hover}
+              handleRating={setRating}
+              handleHover={setHover}
+            />
           ))}
         </div>
       </div>
