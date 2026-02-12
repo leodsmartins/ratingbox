@@ -1,6 +1,8 @@
 import Button from "./Button";
 
-function Modal({ rating, onClick }) {
+function Modal({ isOpen, rating, onClick }) {
+  if (!isOpen) return null;
+
   return (
     <div className="modal-overlay">
       <div className="modal">

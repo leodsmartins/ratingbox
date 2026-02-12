@@ -6,17 +6,17 @@ import Modal from "./Modal";
 const Rating = ({ heading = "How do you feel about React?", color = "gold" }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [submit, setSubmit] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const stars = Array.from({ length: 5 }, (_, i) => i + 1);
   const feedbackMessages = ["Very poor", "Poor", "Average", "Good", "Excellent"];
 
   const handleSubmit = () => {
-    setSubmit(true);
+    setSubmitted(true);
   };
 
-  const handleClose = () => {
-    setSubmit(false);
+  const closeModal = () => {
+    setSubmitted(false);
     setRating(0);
     setHover(0);
   };
@@ -51,7 +51,7 @@ const Rating = ({ heading = "How do you feel about React?", color = "gold" }) =>
           onClick={handleSubmit}
           children="Submit"
         />
-        {submit && <Modal rating={rating} onClick={handleClose} />}
+        <Modal isOpen={submitted} rating={rating} onClick={closeModal} />
       </div>
     </>
   );
